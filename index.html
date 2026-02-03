@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Susmita 💖</title>
+
+<style>
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffc0cb; /* light pink */
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+  }
+
+  .box {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    width: 90%;
+    max-width: 360px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centers content horizontally */
+  }
+
+  h1 {
+    font-size: 2.5em; /* big size */
+    font-weight: bold;
+    margin-top: 40px;
+    color: black;
+  }
+
+  h2 {
+    font-size: 2em; /* slightly bigger */
+    font-weight: bold;
+    margin-top: 20px;
+    color: black;
+  }
+
+  button {
+    padding: 10px 22px;
+    font-size: 16px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin: 10px;
+    font-weight: bold;
+  }
+
+  #yes {
+    background: #ff4d6d;
+    color: white;
+  }
+
+  #no {
+    background: #ddd;
+    position: relative;
+  }
+
+  #gif-container {
+    display: flex;
+    justify-content: center; /* center GIF horizontally */
+    margin-top: 15px;
+    width: 100%;
+  }
+
+  img {
+    width: 200px;
+    display: block;
+  }
+
+  #text {
+    font-size: 16px; 
+    margin-top: 15px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .big-text {
+    font-size: 20px; /* bigger for Yes message */
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+  <source src="gulam_hai.mp3" type="audio/mpeg">
+</audio>
+
+<div class="box">
+  <h1>Hey Susmita 💖</h1>
+  <h2>Do you love me?</h2>
+
+  <div id="buttons">
+    <button id="yes">Yes</button>
+    <button id="no">No</button>
+  </div>
+
+  <p id="text"></p>
+
+  <!-- GIF container -->
+  <div id="gif-container">
+    <img id="img" style="display:none;">
+  </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+const text = document.getElementById("text");
+const img = document.getElementById("img");
+const buttons = document.getElementById("buttons");
+
+// Play background music on first click/tap
+let musicPlayed = false;
+document.body.addEventListener("click", () => {
+  if(!musicPlayed){
+    document.getElementById("bgMusic").play();
+    musicPlayed = true;
+  }
+});
+
+// Track how many times No is clicked
+let noClickCount = 0;
+
+// No button click
+noBtn.addEventListener("click", () => {
+  noClickCount++;
+
+  if(noClickCount === 1){
+    // First click
+    text.innerText = "Ar ekbar bhab please please please 🥺";
+    img.src = "https://media.giphy.com/media/9Y5BbDSkSTiY8/giphy.gif"; // original GIF
+    img.style.display = "block";
+  } else if(noClickCount === 2){
+    // Second click
+    text.innerText = "Amon koro na cutie pie please amar mon ta bhojo I really like you 😢😭";
+    img.src = "https://media.giphy.com/media/5GoVLqeAOo6PK/giphy.gif"; // cute crying baby GIF
+    img.style.display = "block";
+  } else {
+    // Optional: for extra clicks, it can just keep moving
+    const x = Math.random() * 150 - 75;
+    const y = Math.random() * 150 - 75;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+  }
+});
+
+// Yes button click
+yesBtn.addEventListener("click", () => {
+  buttons.style.display = "none";
+  text.innerText = "I knew you love me cutie 🥰 love you too 🤭💖";
+  text.classList.add("big-text");
+  img.src = "https://media.giphy.com/media/l2QDM9Jnim1YVILXa/giphy.gif";
+  img.style.display = "block";
+});
+</script>
+
+</body>
+</html>
